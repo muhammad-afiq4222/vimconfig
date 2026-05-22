@@ -1,15 +1,16 @@
 filetype plugin indent on
-set softtabstop=4
+set softtabstop=2
 set smartindent
 set showmatch
 syntax on
+
 " Line numbers
 set number
 set relativenumber
 
 " Indentation and tabs
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set expandtab
 
@@ -24,13 +25,6 @@ set signcolumn=yes
 set cursorline
 set colorcolumn=80
 
-" Backspace behavior
-set backspace=indent,eol,start
-
-" Split window behavior
-set splitbelow
-set splitright
-
 " dw/diw/ciw treat dash-separated words as single word
 set iskeyword+=-
 
@@ -39,5 +33,3 @@ set scrolloff=8
 
 " Cursor responsiveness
 set updatetime=50
-
-set laststatus=2
