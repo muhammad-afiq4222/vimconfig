@@ -3,9 +3,9 @@ let lspOpts = #{autoHighlightDiags: v:true}
 autocmd User LspSetup call LspOptionsSet(lspOpts)
 let lspServers = [
       \ #{
-      \   name: 'rust-analyzer',
-      \   filetype: ['rust'],
-      \   path: 'rust-analyzer',
+      \   name: 'clangd',
+      \   filetype: ['c', 'cpp'],
+      \   path: 'clangd',
       \   args: []
       \ }
       \ ]
@@ -22,7 +22,7 @@ nnoremap <leader>pd :LspDiag prev \| LspDiag current<CR>
 inoremap <silent> <C-Space> <C-x><C-o>
 
 " Set omnifunc for completion
-autocmd FileType php setlocal omnifunc=lsp#complete
+autocmd FileType c,cpp setlocal omnifunc=lsp#complete
 
 " Custom diagnostic sign characters
 autocmd User LspSetup call LspOptionsSet(#{
