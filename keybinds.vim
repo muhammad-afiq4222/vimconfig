@@ -39,19 +39,6 @@ nnoremap Q <nop>
 nnoremap <leader>k :lnext<CR>zz
 nnoremap <leader>j :lprev<CR>zz
 
-" Doge doc generator
-nnoremap <leader>dg :DogeGenerate<CR>
-
-" Substitute word under cursor on line
-nnoremap <leader>s :s/\<<C-r><C-w>\>//gI<Left><Left><Left>
-
-" Make current file executable
-nnoremap <leader>x :!chmod +x %<CR>
-
-" Yank via OSCYank
-nmap <leader>y <Plug>OSCYankOperator
-vmap <leader>y <Plug>OSCYankVisual
-
 " Reload vimrc (adjust path as needed)
 nnoremap <leader>rl :source ~/.vim/vimrc<CR>
 
