@@ -2,6 +2,22 @@
 #+AUTHOR: Tony
 #+DATE: 2025
 
+# Installing into machine
+#+begin_src bash
+mkdir vimconfig
+cd vimconfig
+git clone https://github.com/muhammad-afiq4222/vimconfig.git ./
+cd ../ 
+mv vimconfig/* .vim/
+vim .vimrc
+#+end_src
+
+source ~/.vim/vimrc
+
+That should clone the repos
+
+Check if you fzf and edit the vimrc accordingly
+
 * Keybindings
 
 ** General
@@ -11,8 +27,7 @@
 | Normal | =<leader>cd=    | Open netrw file explorer            |
 | Normal | =<leader>rl=    | Reload vimrc                        |
 | Normal | =<leader><leader>= | Source current file              |
-| Insert | =<C-c>=         | Behave like =<Esc>=                 |
-| Normal | =Q=             | Disabled (no Ex mode)               |
+
 
 ** Editing
 | Mode          | Key          | Action                                 |
@@ -39,7 +54,7 @@
 | Normal | =<leader>j=  | Previous location list (centered)|
 | Normal | =<leader>cl= | Close location list              |
 
-** FZF
+** FZF (CHECK IF YOU HAVE FZF FIRST, DISALED BY DEFAULT)
 | Mode   | Key          | Action                              |
 |--------+--------------+-------------------------------------|
 | Normal | =<leader>ff= | Find files                          |
@@ -52,60 +67,17 @@
 | Normal | =<leader>fc= | Grep for current filename           |
 | Normal | =<leader>fi= | Find files in =~/.vim= config       |
 
-** Clipboard (OSCYank)
-| Mode          | Key         | Action                    |
-|---------------+-------------+---------------------------|
-| Normal/Visual | =<leader>y= | Yank via OSCYank          |
 
 * Dependencies
 
 ** Required
 - =git= - For plugin management
 - =vim= - 8.0+ recommended
+
+## Optional
 - =ripgrep= (=rg=) - Fast grep alternative for FZF
 - =fd= - Fast find alternative for FZF
 - =fzf= - Fuzzy finder
-
-** Optional
-- =rust-analyzer= - Rust LSP server
-- =typescript-language-server= - TypeScript/JavaScript LSP
-- =intelephense= - PHP LSP
-
-** Installation
-
-*** Arch Linux
-#+begin_src bash
-sudo pacman -S git vim ripgrep fd fzf
-sudo pacman -S rust-analyzer  # optional
-npm install -g typescript-language-server  # optional
-#+end_src
-
-*** NixOS
-#+begin_src bash
-nix-env -iA nixpkgs.git nixpkgs.vim nixpkgs.ripgrep nixpkgs.fd nixpkgs.fzf
-nix-env -iA nixpkgs.rust-analyzer  # optional
-npm install -g typescript-language-server  # optional
-#+end_src
-
-*** Gentoo
-#+begin_src bash
-sudo emerge --ask dev-vcs/git app-editors/vim sys-apps/ripgrep sys-apps/fd app-shells/fzf
-sudo emerge --ask dev-lang/rust-bin  # for rust-analyzer
-npm install -g typescript-language-server  # optional
-#+end_src
-
-*** Linux (Debian/Ubuntu)
-#+begin_src bash
-sudo apt install git vim ripgrep fd-find fzf
-# Note: fd is called fd-find on Debian/Ubuntu
-#+end_src
-
-*** macOS
-#+begin_src bash
-brew install git vim ripgrep fd fzf
-brew install rust-analyzer  # optional
-npm install -g typescript-language-server  # optional
-#+end_src
 
 *** Rust Analyzer
 #+begin_src bash
@@ -204,16 +176,3 @@ git pull
 The FZF configuration respects =.gitignore=, =.fdignore=, and =.rgignore= files automatically.
 
 Use =<leader>ff= to search files, =<leader>fg= to grep content.
-
-** LSP Servers
-Configure LSP servers in your config. Currently configured:
-- Rust: =rust-analyzer=
-- TypeScript/JavaScript: =typescript-language-server=
-- PHP: =intelephense=
-
-* Notes
-
-- The plugin manager is custom and minimal - it auto-installs plugins on Vim startup
-- =.fdignore= and =.rgignore= prevent searching through plugin directories and undo files
-- FZF uses =fd= for file listing (faster than =find=) and =rg= for content search
-- OSCYank allows copying to system clipboard even over SSH
