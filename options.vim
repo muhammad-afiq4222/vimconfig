@@ -21,9 +21,7 @@ set incsearch
 
 " Appearance
 set background=dark
-set signcolumn=yes
 set cursorline
-set colorcolumn=80
 
 " dw/diw/ciw treat dash-separated words as single word
 set iskeyword+=-
